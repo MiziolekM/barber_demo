@@ -12,14 +12,13 @@ import dev.mateusz.barber.demo.entity.Role;
 import dev.mateusz.barber.demo.validation.FieldMatch;
 import dev.mateusz.barber.demo.validation.ValidEmail;
 
-//adnotacje do porównania haseł
 @FieldMatch.List({
     @FieldMatch(first = "password", 
     		second = "matchingPassword", 
     		message = "Oba hasła muszą być zgodne")
 })
-public class CrmUser {
-	
+public class CrmUser{
+
 	private int idUser;
 	
 	@NotNull(message = "Wymagany")

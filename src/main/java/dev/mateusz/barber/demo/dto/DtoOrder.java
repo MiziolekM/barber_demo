@@ -1,7 +1,5 @@
 package dev.mateusz.barber.demo.dto;
 
-import java.util.Date;
-
 public class DtoOrder {
 
 	private int idOrder;

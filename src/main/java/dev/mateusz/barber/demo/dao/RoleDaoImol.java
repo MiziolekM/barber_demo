@@ -12,10 +12,8 @@ import dev.mateusz.barber.demo.entity.Role;
 @Repository
 public class RoleDaoImol implements RoleDao {
 	
-	// wykorzystanie EntityManager
 	private EntityManager entityManager;
 
-	// wstrzyknięcie dopiero tu
 	@Autowired
 	public RoleDaoImol(EntityManager entityManager) {
 		this.entityManager = entityManager;
@@ -24,10 +22,8 @@ public class RoleDaoImol implements RoleDao {
 	@Override
 	public Role findRoleByName(String theRoleName) {
 		
-		// dopiero tu używając .unwrap otrzymuje sesje hibernetową
 		Session currentSession = entityManager.unwrap(Session.class);
 		
-		// odzyskuje role z bazy danych wg nazwy roli
 		Query<Role> theQuery = currentSession.createQuery("from Role where role=:theRoleName", Role.class);
 		theQuery.setParameter("theRoleName", theRoleName);
 		
@@ -41,9 +37,5 @@ public class RoleDaoImol implements RoleDao {
 		
 		return theRole;
 	}
-
-
-
-
 
 }

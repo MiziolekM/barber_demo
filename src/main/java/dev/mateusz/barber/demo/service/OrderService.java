@@ -1,5 +1,7 @@
 package dev.mateusz.barber.demo.service;
 
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import dev.mateusz.barber.demo.dto.DtoOrder;
@@ -16,5 +18,7 @@ public interface OrderService {
 	List<Order> searchOrder(String theSearchName);
 	
 	Order getOrderById(int theId);
+	
+	LinkedList<Date> getPrepDates();
 
 }

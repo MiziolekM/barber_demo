@@ -5,14 +5,12 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.BeanWrapperImpl;
 
-// wykorzystuje ConstraintValidator do porównywania czy oba e-maile są takie same
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
 	
 	private String firstFieldName;
     private String secondFieldName;
     private String message;
 
-    // initializacja co z czym porównuje i jaka wiadomość
     @Override
     public void initialize(final FieldMatch constraintAnnotation) {
 	    	firstFieldName = constraintAnnotation.first();
@@ -20,7 +18,6 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
 	    	message = constraintAnnotation.message();
     }
 
-    // sprawdzenie 
     @Override
     public boolean isValid(final Object value, final ConstraintValidatorContext context) {
         

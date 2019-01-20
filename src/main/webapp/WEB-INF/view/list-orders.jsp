@@ -50,7 +50,7 @@
 				<table class="table table-striped">
 					<tr>
 						<th>Nazwa użytkownika</th>
-						<th>Imię</th>
+						<th>Status</th>
 						<th>Rodzaj usługi</th>
 						<th>Cena</th>
 						<th>Data</th>

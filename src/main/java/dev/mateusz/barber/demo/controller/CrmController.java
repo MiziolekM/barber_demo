@@ -25,17 +25,11 @@ import dev.mateusz.barber.demo.service.UserService;
 @Controller
 @RequestMapping("/crm")
 public class CrmController {
-
-	// wstrzykuje userService
+	
 	@Autowired
 	private UserService userService;
 
-	// logger
 	private Logger logger = Logger.getLogger(getClass().getName());
-
-	// dodaje initbinder ... do konwersji wejsciowych stringow (ciecia od białych
-	// znaków)
-	// usuwam białe znaki z przodu i konca
 
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -49,33 +43,15 @@ public class CrmController {
 	@GetMapping("/list")
 	public String listCustomer(Model theModel) {
 
-		// daj uzytkownikow z service
 		List<User> theUsers = userService.getUsers();
-
-		// dodaj uzytkownikow do modelu
 		theModel.addAttribute("users", theUsers);
-
-		logger.info("=====>: " + theUsers);
 
 		return "list-customers";
 	}
 
-	/*
-	 * być moze dodam dodawanie usera przez admina lub moderatora, zostawiam
-	 * zakomentowanie mapowanie
-	 * 
-	 * @GetMapping("/showFormForAdd") public String showFormForAdd(Model theModel) {
-	 * 
-	 * //utworzenie atrubutu modelu do bindowania formularza danych User theUser =
-	 * new User();
-	 * 
-	 * theModel.addAttribute("crmUser", theUser);
-	 * 
-	 * return "customer-form"; }
-	 */
-
 	@PostMapping("/updateUser")
-	public String updateUser(@Valid @ModelAttribute("crmUser") CrmUser theCrmUser, BindingResult theBindingResult,
+	public String updateUser(@Valid @ModelAttribute("crmUser") CrmUser theCrmUser, 
+			BindingResult theBindingResult,
 			Model theModel) {
 
 		if (theBindingResult.hasErrors()) {
@@ -84,19 +60,14 @@ public class CrmController {
 
 		int crmIdUser = theCrmUser.getIdUser();
 
-		// sprawdzenie czy w bazie danych istnieje już taki user
 		String userName = theCrmUser.getUserName();
 		User existingUserByUserName = userService.findByUserName(userName, crmIdUser);
 		if (existingUserByUserName != null) {
 
-			// ustawiam nazwą na pusty bo taki już istnieje
-			// reszta zostaje zapamiętana
 			theCrmUser.setUserName("");
 
-			// przekazuje do widoku przygotowany crmUser
 			theModel.addAttribute("crmUser", theCrmUser);
 
-			// przekazuje do widoku specjalną informacje
 			theModel.addAttribute("updateError", "Użytkownik z taką nazwą już istnieje!");
 
 			logger.warning("Użytkownik z taką nazwą już istnieje!");
@@ -107,8 +78,6 @@ public class CrmController {
 		User existingUserByEmail = userService.findByUserEmail(theEmail, crmIdUser);
 		if (existingUserByEmail != null) {
 
-			// ustawiam email na pusty bo taki już istnieje
-			// reszta zostaje zapamiętana
 			theCrmUser.setEmail("");
 
 			theModel.addAttribute("crmUser", theCrmUser);
@@ -123,8 +92,6 @@ public class CrmController {
 		User existingUserByPhoneNumber = userService.findByUserPhoneNumber(thePhoneNumber, crmIdUser);
 		if (existingUserByPhoneNumber != null) {
 
-			// ustawiam telefon na pusty bo taki już istnieje
-			// reszta zostaje zapamiętana
 			theCrmUser.setPhoneNumber(0);
 
 			theModel.addAttribute("crmUser", theCrmUser);
@@ -135,7 +102,6 @@ public class CrmController {
 			return "customer-form";
 		}
 
-		// zapisz usera uzywając servisu
 		userService.updateUser(theCrmUser);
 
 		return "redirect:/crm/list";
@@ -144,7 +110,6 @@ public class CrmController {
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("idUser") int theId, Model theModel) {
 
-		// daj usera z serwisu
 		User theUser = userService.getUserById(theId);
 
 		CrmUser crmUser = new CrmUser();
@@ -159,11 +124,6 @@ public class CrmController {
 		crmUser.setPhoneNumber(theUser.getPhoneNumber());
 		crmUser.setRoles(theUser.getRoles());
 
-		Logger logger = Logger.getLogger(getClass().getName());
-
-		logger.info("----->" + crmUser.getRoles());
-
-		// ustaw usera jako model attribute do formularza
 		theModel.addAttribute("crmUser", crmUser);
 
 		return "customer-form";
@@ -172,20 +132,16 @@ public class CrmController {
 	@GetMapping("/delete")
 	public String deleteCustomer(@RequestParam("idUser") int theId) {
 
-		// daj customera z serwisu
 		userService.deleteUser(theId);
 
-		// zwracamy liste zrefreshowaną
 		return "redirect:/crm/list";
 	}
 
 	@PostMapping("/search")
 	public String searchUser(@RequestParam("theSearchName") String theSearchName, Model theModel) {
 
-		// szukaj uzytkownikow z serwisu
 		List<User> theCustomers = userService.searchUsers(theSearchName);
 
-		// dodaj usera do modelu
 		theModel.addAttribute("users", theCustomers);
 
 		return "list-customers";

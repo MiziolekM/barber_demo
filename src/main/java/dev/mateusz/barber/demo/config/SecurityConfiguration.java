@@ -15,15 +15,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
-	// wstrzykuje kodowanie
 	@Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	// wstrzykuje security data source
 	@Autowired
 	private DataSource securityDataSource;
-	
-	// dwa zapytania do autoryzacji z application.properties
+
 	@Value("${spring.queries.users-query}")
     private String usersQuery;
 
@@ -32,9 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
-		//używam jdbc authentication 
-		
+
 		auth.
         jdbcAuthentication()
         .usersByUsernameQuery(usersQuery)
@@ -45,9 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception{
-    
-		//customer wchodzi wszędzie, moderator do zamówień, admin do crm 
-		
+
 		http.authorizeRequests()
 			.antMatchers("/").hasRole("CUSTOMER")
 			.antMatchers("/orders/**").hasRole("MODERATOR")
