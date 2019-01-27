@@ -3,7 +3,7 @@
 
 ## Spis treści
 
-* [General info](#general-info)
+* [Informacje](#informacje)
 * [Technologie] (#technologie)
 * [Funkcjonalności] (#funkcjonalności)
 * [Uruchomienie] (#uruchomienie)
