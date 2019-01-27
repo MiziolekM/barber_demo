@@ -6,7 +6,7 @@
 * [Informacje ogólne](#informacje-ogólne)
 * [Technologie](#technologie)
 * [Funkcjonalności](#funkcjonalności)
-* [Uruchomienie] #uruchomienie)
+* [Uruchomienie](#uruchomienie)
 
 ## Informacje ogólne
 
@@ -45,9 +45,9 @@ Aplikacja ma status rozwojowym. Jako IDE używałem Eclipse. Wszystko czego potr
 *Oraz ewentualnie zmienić port adnotacja - "server.port="
 
 4. Domyślne loginy i hasła"
-*Dla administratora to "admin", hasło to "test123"
-*Dla moderatora to "moderator", hasło to "test123"
-*Dla klienta to "usercustomer" hasło to "test123"
+* Dla administratora to "admin", hasło to "test123"
+* Dla moderatora to "moderator", hasło to "test123"
+* Dla klienta to "usercustomer" hasło to "test123"
 
 ## Status
 
