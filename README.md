@@ -3,12 +3,12 @@
 
 ## Spis treści
 
-* [Informacje ogólne] (#informacje-ogólne)
+* [General info](#general-info)
 * [Technologie] (#technologie)
 * [Funkcjonalności] (#funkcjonalności)
 * [Uruchomienie] (#uruchomienie)
 
-## Informacje Ogólne
+## General info
 
 Aplikacja webowa do rejestracji usługi fryzjerskiej przez klienta.
 
