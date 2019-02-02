@@ -7,10 +7,12 @@
 * [Technologie](#technologie)
 * [Funkcjonalności](#funkcjonalności)
 * [Uruchomienie](#uruchomienie)
+* [Status](#status)
+* [Ilustracje](#ilustracje)
 
 ## Informacje ogólne
 
-Aplikacja webowa do rejestracji usługi fryzjerskiej przez klienta.
+Aplikacja webowa do rejestracji usługi fryzjerskiej przez klienta. Klient po rejestracji loguje się i wybiera jedną z czterech usług oraz czas wykonania danej usługi. Datę oraz czas można wybrać z maksymalnym wyprzedzeniem dwudziestu dni.
 
 ## Technologie
 
@@ -57,4 +59,8 @@ Plany:
 * potwierdzenie rejestracji emailem
 * odzyskiwanie hasła emailem
 * potwierdzenie zapisania się do fryzjera z wykorzystaniem SMS API
+
+## Ilustracje
+![Strona Domowa](./images/main.png)
+![Strona Domowa](./images/crm.png)
 
