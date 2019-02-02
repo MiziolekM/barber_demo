@@ -61,6 +61,6 @@ Plany:
 * potwierdzenie zapisania się do fryzjera z wykorzystaniem SMS API
 
 ## Ilustracje
-![Strona Domowa](./images/main.png)
-![Strona Domowa](./images/crm.png)
+![Strona Domowa](./images/main.jpg)
+![Strona Domowa](./images/crm.jpg)
 
